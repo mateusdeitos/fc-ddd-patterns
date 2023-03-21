@@ -62,3 +62,40 @@ export default class Customer {
 }
 ```
 
+## Agregados (Aggregate)
+
+É um conjunto de objetos associados que são tratados como uma única unidade.
+
+Exemplo:
+
+```ts
+
+class Customer {
+  private _id: string;
+  private _name: string = "";
+  private _address!: Address; // Value object
+  private _orders: Order[] = []; // Agregado
+}
+
+class Order {
+  private _id: string;
+  private _customer: Customer;
+  private _items: OrderItem[] = [];
+}
+
+class OrderItem {
+  private _id: string;
+  private _order: Order;
+  private _product: Product;
+  private _quantity: number;
+  private _price: number;
+}
+
+class Product {
+  private _id: string;
+  private _name: string;
+  private _price: number;
+}
+```
+
+
