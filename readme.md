@@ -98,4 +98,28 @@ class Product {
 }
 ```
 
+## Domain Services
 
+- São serviços que não são parte do domínio, mas que são necessários para o domínio.
+
+Exemplo, realizar uma ação em lote em várias entidades:
+
+```ts
+
+class OrderService {
+  public calculateTotalOfOrders(orders: Order[]): number {
+	let total = 0;
+	for (const order of orders) {
+	  total += order.total;
+	}
+
+	return total;
+  }
+}
+```
+
+### Cuidados
+
+- Quando um service possuir muitos métodos, provavelmente os agregados estão anêmicos, ou seja, eles somente são getters/setters
+
+- Services são stateless, ou seja, não possuem estado
